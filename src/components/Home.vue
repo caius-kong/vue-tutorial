@@ -16,16 +16,15 @@
     name: 'Home',
     data () {
       return {
-        username: '1'
+        username: ''
       }
     },
     methods: {
       setUsername () {
-        var comp = this // then中的this非此this，因此选择 "副本引用"
         this.$axios.get('http://127.0.0.1:3000/sayhello')
           .then(function (response) {
-            comp.username = response.data.name // 由于ajax请求是异步的，因此正确的做法是：局部更新某个值。如果选择返回值，你会发现没卵用。
-          })
+            this.username = response.data.name // // 由于ajax请求是异步的，因此正确的做法是：局部更新某个值。如果选择返回值，你会发现没卵用。
+          }.bind(this))
           .catch(function (error) {
             console.log(error)
           })
