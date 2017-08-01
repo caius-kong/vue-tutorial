@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import Sidebar from '@/components/Sidebar.vue'
+  import Sidebar from '@/components/Sidebar'
   export default {
     name: 'App',
     components: { 'sidebar': Sidebar }
